@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.supadata.dao.TeamBuyMapper" >
+  <resultMap id="BaseResultMap" type="com.supadata.pojo.TeamBuy" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="u_id" property="uId" jdbcType="INTEGER" />
+    <result column="u_order_id" property="uOrderId" jdbcType="VARCHAR" />
+    <result column="pay_time" property="payTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="free_fee" property="freeFee" jdbcType="VARCHAR" />
+    <result column="total_fee" property="totalFee" jdbcType="VARCHAR" />
+    <result column="tb_status" property="tbStatus" jdbcType="VARCHAR" />
+    <result column="tb_number" property="tbNumber" jdbcType="VARCHAR" />
+    <result column="pay_number" property="payNumber" jdbcType="VARCHAR" />
+    <result column="tb_url" property="tbUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, u_id, u_order_id, pay_time, end_time, free_fee, total_fee, tb_status, tb_number, 
+    pay_number, tb_url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_team_buy
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_team_buy
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.supadata.pojo.TeamBuy" >
+    insert into tb_team_buy (id, u_id, u_order_id, 
+      pay_time, end_time, free_fee, 
+      total_fee, tb_status, tb_number, 
+      pay_number, tb_url)
+    values (#{id,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{uOrderId,jdbcType=VARCHAR}, 
+      #{payTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{freeFee,jdbcType=VARCHAR}, 
+      #{totalFee,jdbcType=VARCHAR}, #{tbStatus,jdbcType=VARCHAR}, #{tbNumber,jdbcType=VARCHAR}, 
+      #{payNumber,jdbcType=VARCHAR}, #{tbUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.supadata.pojo.TeamBuy" >
+    insert into tb_team_buy
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="uOrderId != null" >
+        u_order_id,
+      </if>
+      <if test="payTime != null" >
+        pay_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="freeFee != null" >
+        free_fee,
+      </if>
+      <if test="totalFee != null" >
+        total_fee,
+      </if>
+      <if test="tbStatus != null" >
+        tb_status,
+      </if>
+      <if test="tbNumber != null" >
+        tb_number,
+      </if>
+      <if test="payNumber != null" >
+        pay_number,
+      </if>
+      <if test="tbUrl != null" >
+        tb_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null" >
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="uOrderId != null" >
+        #{uOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="payTime != null" >
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="freeFee != null" >
+        #{freeFee,jdbcType=VARCHAR},
+      </if>
+      <if test="totalFee != null" >
+        #{totalFee,jdbcType=VARCHAR},
+      </if>
+      <if test="tbStatus != null" >
+        #{tbStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="tbNumber != null" >
+        #{tbNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="payNumber != null" >
+        #{payNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tbUrl != null" >
+        #{tbUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.supadata.pojo.TeamBuy" >
+    update tb_team_buy
+    <set >
+      <if test="uId != null" >
+        u_id = #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="uOrderId != null" >
+        u_order_id = #{uOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="payTime != null" >
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="freeFee != null" >
+        free_fee = #{freeFee,jdbcType=VARCHAR},
+      </if>
+      <if test="totalFee != null" >
+        total_fee = #{totalFee,jdbcType=VARCHAR},
+      </if>
+      <if test="tbStatus != null" >
+        tb_status = #{tbStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="tbNumber != null" >
+        tb_number = #{tbNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="payNumber != null" >
+        pay_number = #{payNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tbUrl != null" >
+        tb_url = #{tbUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.supadata.pojo.TeamBuy" >
+    update tb_team_buy
+    set u_id = #{uId,jdbcType=INTEGER},
+      u_order_id = #{uOrderId,jdbcType=VARCHAR},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      free_fee = #{freeFee,jdbcType=VARCHAR},
+      total_fee = #{totalFee,jdbcType=VARCHAR},
+      tb_status = #{tbStatus,jdbcType=VARCHAR},
+      tb_number = #{tbNumber,jdbcType=VARCHAR},
+      pay_number = #{payNumber,jdbcType=VARCHAR},
+      tb_url = #{tbUrl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
